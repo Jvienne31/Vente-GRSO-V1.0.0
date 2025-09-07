@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Ventes GRSO V3",
+  "description": "Un système complet de point de vente (PDV) et de gestion d'inventaire pour les magasins physiques. Il gère les ventes, le suivi des stocks, l'historique des transactions et fournit des rapports de vente.",
+  "requestFramePermissions": []
+}
