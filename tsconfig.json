@@ -25,5 +25,11 @@
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "exclude": [
+    "preload.cjs",
+    "electron.cjs",
+    "dist",
+    "node_modules"
+  ]
 }
