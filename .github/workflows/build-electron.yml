@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest # On utilise une machine virtuelle Windows pour créer le .exe
+    runs-on: windows-2022 # Use specific version to avoid migration issues
 
     steps:
     - name: Checkout code
@@ -15,17 +15,23 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20' # Utilise une version stable de Node.js
+        node-version: '22' # Use Node.js 22 as required by Vite 7+
         cache: 'npm'
 
     - name: Install dependencies
       run: npm install
 
-    - name: Build the application
+    - name: Build web application
       run: npm run build
+
+    - name: Build Electron app
+      run: npx electron-builder --win
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: Ventes-GRSO-Installer
-        path: dist/*.exe # Chemin vers l'installateur généré
+        path: |
+          release/*.exe
+          release/*.blockmap
+          release/latest.yml
