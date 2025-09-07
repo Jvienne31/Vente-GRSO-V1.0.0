@@ -7,7 +7,10 @@
     "start": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "electron": "vite build && electron ."
+    "electron": "vite build && electron .",
+    "electron:dev": "set NODE_ENV=development && electron .",
+    "electron:build": "npm run build && electron-builder --win",
+    "electron:dist": "electron-builder --win"
   },
   "author": "GRSO",
   "devDependencies": {
@@ -21,13 +24,17 @@
   "build": {
     "appId": "com.ventes.grso",
     "productName": "Ventes GRSO",
+    "directories": {
+      "output": "release"
+    },
     "files": [
-      "**/*",
-      "!*.test.ts"
+      "dist/**/*",
+      "electron.cjs",
+      "preload.cjs",
+      "package.json"
     ],
     "win": {
-      "target": "nsis",
-      "icon": "icon.ico"
+      "target": "nsis"
     }
   },
   "dependencies": {
